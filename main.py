@@ -9,7 +9,7 @@ from bs4 import BeautifulSoup
 async def get_html(url):
     async with aiohttp.ClientSession() as session:
         async with session.get(url) as resp:
-            if resp.status == 201:
+            if resp.status == 200:
                 return await resp.text()
     return ''
 
