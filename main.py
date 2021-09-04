@@ -1,6 +1,7 @@
 import asyncio
 import csv
 import sys
+from random import randint
 
 import aiohttp
 from bs4 import BeautifulSoup
@@ -43,6 +44,8 @@ async def main():
                 else:
                     body_text = body.contents[0] if body.contents else ''
                 result.append((label_text, body_text))
+
+    result.append(('Тщательность', randint(1, 3)))
 
     filename = next(filter(lambda x: x[0] == 'Номер закупки', result))[1]
     filename = filename.replace('/', '_') + '.csv'
